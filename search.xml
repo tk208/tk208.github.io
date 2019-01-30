@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[使用MarkDown写博客遇到一些问题(持续更新中)。]]></title>
+    <url>%2F2019%2F01%2F31%2FSome-issue-when-writing-blogs-with-MarkDown%2F</url>
+    <content type="text"><![CDATA[特殊符号上标（superscripts）和下标 （subscripts）有两种表示法： Latex公式表示法 &#160; &#160; &#160; &#160; &#160; 上标用^，下标用_。 用VS Code编辑MarkDown文本预览有效，支持这种公式输入法。 在基于Hexo框架搭建的Blog中，却无法正确显示结果。 所以，不推荐使用这种Latex公式表示方法。 HTML标签表示法 HTML可以很轻松得打出上标和下标，而markdown是支持HTML语法的。 上标用&lt;sup&gt;xxx&lt;/sup&gt;，下标用&lt;sub&gt;xxx&lt;/sub&gt;。 其中xxx表示上标的内容，看个例子： 写一个公式：n的平方等于n+1 写法如下： n&lt;sup&gt;2&lt;/sup&gt;=n+1 结果如下： n2=n+1 HTML标签表示法无论是在IDE中，还是在hexo deploy后的Blog中实际呈现结果都是一致正确的。 所以，推荐使用HTML标签表示上下标。]]></content>
+      <categories>
+        <category>Tech</category>
+      </categories>
+      <tags>
+        <tag>MarkDown</tag>
+        <tag>技术</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[写在2019年的伊始]]></title>
+    <url>%2F2019%2F01%2F30%2F%E5%86%99%E5%9C%A82019%E5%B9%B4%E7%9A%84%E4%BC%8A%E5%A7%8B%2F</url>
+    <content type="text"><![CDATA[&#160; &#160; &#160; &#160;今年回家最大的变化是沿河拔地而起的栋栋高楼。 &#160; &#160; &#160; &#160;据说价格冲到了&yen; 5200元/m2，一年前这个数字的最大值是&yen; 4500元/m2。平均价格&yen; 3710元/m2，同比上涨11.2%。再往前一年，这个价格的平均值是&yen; 2800元/m2左右。 &#160; &#160; &#160; &#160;官方数据显示，2018年前11个月，房地产开发用地供应面积同比增长 598.36%，新建商品房销售面积同比增长 302.77 %。 &#160; &#160; &#160; &#160;同样在2018年，中国的GDP的增速为6.6%，其中第四季度增速为6.4%，创下了近十年的最低记录；全国居民人均可支配收入28228元，实际增长6.5%。A股市值下降15万亿人民币，人均亏损超10万。汽车销量创下三十多年来首次下滑的记录。 &#160; &#160; &#160; &#160;一半是火焰，一半是冰山。]]></content>
+      <categories>
+        <category>Life</category>
+      </categories>
+      <tags>
+        <tag>生活</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2F2019%2F01%2F30%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
