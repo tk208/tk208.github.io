@@ -107,7 +107,7 @@
 <meta property="og:description" content="前端的小知识点。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://image.tracup.com/d7442f449bad8c73aaa738ed34fec518">
-<meta property="og:updated_time" content="2019-02-17T15:45:15.479Z">
+<meta property="og:updated_time" content="2019-02-18T05:33:30.528Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript">
 <meta name="twitter:description" content="前端的小知识点。">
@@ -484,7 +484,7 @@
           
           
             <div class="post-gallery-row">
-              <a class="post-gallery-img fancybox" href="https://image.tracup.com/d7442f449bad8c73aaa738ed34fec518" rel="gallery_cjs9369ww001c9sug47m1ijkj" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+              <a class="post-gallery-img fancybox" href="https://image.tracup.com/d7442f449bad8c73aaa738ed34fec518" rel="gallery_cjsbtvccz001jzougfh5xpm61" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
                 <img src="https://image.tracup.com/d7442f449bad8c73aaa738ed34fec518" itemprop="contentUrl">
               </a>
             
@@ -504,7 +504,7 @@
 <p>网景公司动了心，网景公司的整个管理层都成了 Java 语言的粉丝。不仅允许 Java 程序以 applet (小程序)的形式，直接在浏览器中运行；甚至还考虑直接将 Java 作为脚本语言嵌入网页。</p>
 <p>但是发现这样太复杂，于是公司安排 Brendan Eich 开发一种全新的脚本语言，但是必须要和 java 非常像，同时要比 java 简单，让没学过编程的人也能很快上手。</p>
 <p>所以，Brendan Eich 是被赶鸭子上架的。</p>
-<p>他自己本人对这个项目完全一点兴趣，因为公司要求新语言和 java 要非常像，就意味着要开发一款面向对象的语言。而他最擅长最喜欢的恰恰是 Scheme 这种非面向对象的函数式编程。</p>
+<p>他自己本人对这个项目完全没有一点兴趣，因为公司要求新语言和 java 要非常像，就意味着要开发一款面向对象的语言。而他最擅长最喜欢的恰恰是 Scheme 这种非面向对象的函数式编程。</p>
 <p>为了应付公司安排的任务，他只用 10 天时间就把 Javascript 设计出来了。</p>
 <p>可想而知，Javascript 的诞生是多么的仓促和草率。这也导致后来很长一段时间，Javascript 写出来的程序混乱不堪。</p>
 <p>（自古成者为王败者寇，鉴于 Javascript 目前的江湖地位，我们把曾经因不严谨导致的混乱称之为灵活。）</p>
@@ -562,7 +562,7 @@
 <p>基本上，ES6 的<code>class</code>可以看作只是一个语法糖，它的绝大部分功能，ES5 都可以做到，新的<code>class</code>写法只是让对象原型的写法更加清晰、更像面向对象编程的语法而已。</p>
 <h3 id="所以，ES6-一共有-6-种声明变量的方法。"><a href="#所以，ES6-一共有-6-种声明变量的方法。" class="headerlink" title="所以，ES6 一共有 6 种声明变量的方法。"></a>所以，ES6 一共有 6 种声明变量的方法。</h3><p>目前，各大浏览器对 ES6 支持度已经越来越高了，超过 90% 的 ES6 语法特性都实现了。</p>
 <p>对于剩下那 10% 可能的不兼容，你完全不必担心。</p>
-<p>因为有 Babel 转码器、Traceur 转码器这些工具，可以将 ES6 代码转为 ES5 代码，从而在现有环境执行。其中 Babel 对 ES6 的支持程度比其它同类更高，而且 Babel 拥有完善的文档和一个很棒的在线交互式编程环境，因此用的比较多</p>
+<p>因为有 Babel 转码器、Traceur 转码器这些工具，可以将 ES6 代码转为 ES5 代码，从而在现有环境执行。其中 Babel 对 ES6 的支持程度比其它同类更高，而且 Babel 拥有完善的文档和一个很棒的在线交互式编程环境，因此用的比较多。</p>
 <h3 id="这意味着，你可以用-ES6-的方式编写程序，又不用担心现有环境是否支持。"><a href="#这意味着，你可以用-ES6-的方式编写程序，又不用担心现有环境是否支持。" class="headerlink" title="这意味着，你可以用 ES6 的方式编写程序，又不用担心现有环境是否支持。"></a>这意味着，你可以用 ES6 的方式编写程序，又不用担心现有环境是否支持。</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 转码前</span><br><span class="line">input.map(item =&gt; item + 1);</span><br><span class="line"></span><br><span class="line">// 转码后</span><br><span class="line">input.map(<span class="keyword">function</span> (item) &#123;</span><br><span class="line">  <span class="built_in">return</span> item + 1;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
       
@@ -671,6 +671,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/02/19/元宵节快乐！/" rel="prev" title="元宵节快乐！">
+                元宵节快乐！ <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -751,7 +755,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -773,7 +777,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -840,7 +844,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">22.8k</span>
+    <span title="Site words total count">22.9k</span>
   
 </div>
 
