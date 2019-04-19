@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+  <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-flash.min.css" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+  
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="技术,编程语言,App开发,React,Swift,Cordova,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Wu Blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="作为一个手机 App 开发者，作者谈了自己使用标题里面的三种技术开发的感受。">
+<meta name="keywords" content="技术,编程语言,App开发,React,Swift,Cordova">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cordova，React-Native 和 Swift ，谁是下一个霸主？（译文）">
+<meta property="og:url" content="https://tk208.github.io/Cordova，React-Native-和-Swift-，谁是下一个霸主？/index.html">
+<meta property="og:site_name" content="Wu Blog">
+<meta property="og:description" content="作为一个手机 App 开发者，作者谈了自己使用标题里面的三种技术开发的感受。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://image.tracup.com/96cd3970b7c44df25e8aae8cdfeef0af">
+<meta property="og:updated_time" content="2019-04-02T10:58:06.843Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cordova，React-Native 和 Swift ，谁是下一个霸主？（译文）">
+<meta name="twitter:description" content="作为一个手机 App 开发者，作者谈了自己使用标题里面的三种技术开发的感受。">
+<meta name="twitter:image" content="https://image.tracup.com/96cd3970b7c44df25e8aae8cdfeef0af">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://tk208.github.io/Cordova，React-Native-和-Swift-，谁是下一个霸主？/">
+
+
+
+
+
+  <title>Cordova，React-Native 和 Swift ，谁是下一个霸主？（译文） | Wu Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Wu Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Blogging about life and tech.</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            站点地图
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://tk208.github.io/Cordova，React-Native-和-Swift-，谁是下一个霸主？/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Humos Wu.">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wu Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Cordova，React-Native 和 Swift ，谁是下一个霸主？（译文）</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-05T14:52:16+08:00">
+                2019-02-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tech/" itemprop="url" rel="index">
+                    <span itemprop="name">Tech</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/Cordova，React-Native-和-Swift-，谁是下一个霸主？/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/Cordova，React-Native-和-Swift-，谁是下一个霸主？/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/Cordova，React-Native-和-Swift-，谁是下一个霸主？/" class="leancloud_visitors" data-flag-title="Cordova，React-Native 和 Swift ，谁是下一个霸主？（译文）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  作为一个手机 App 开发者，作者谈了自己使用标题里面的三种技术开发的感受。
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope="" itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox" href="https://image.tracup.com/96cd3970b7c44df25e8aae8cdfeef0af" rel="gallery_cjuoa7skf002gnkuggme80oef" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://image.tracup.com/96cd3970b7c44df25e8aae8cdfeef0af" itemprop="contentUrl">
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><hr>
+<p>本文作者是：<a href="https://yagiz.co/cordova-react-native-swift-whats-next/" target="_blank" rel="noopener">Yagiz Nizipli</a>（亚齐兹·尼茨普坭），一位专注于手机应用程序开发的软件工程师，目前定居在土耳其的伊斯坦布尔。你可以在 Youtube 和 Twitter 上查阅到他的更多信息。</p>
+<blockquote>
+<p>Written by Yagiz Nizipli a Software Architect living in Istanbul working on mobile applications. Look me up on <a href="">Youtube</a> and follow me on <a href="">Twitter</a>.</p>
+</blockquote>
+<p>原文发表的时间是：2019-01-03。<a href="https://yagiz.co/cordova-react-native-swift-whats-next/" target="_blank" rel="noopener">(原文链接请点击这里)</a></p>
+<p>文中的 <strong>注解</strong> 是我查阅资料自己写上去的，和原作者无关，若有纰漏，欢迎批评指正。</p>
+<p>结论：</p>
+<p>Yagiz Nizipli 使用 React-Native (美国 Facebook 公司产品)做开发最多（一度用的很爽），使用 Cordova (美国 Google 公司产品)断断续续四年，但都因为这样那样的问题，被作者嫌弃。最后使用 Swift （美国 Apple公司产品）仅仅一个多月，就喜欢上了用 Swift。</p>
+<p>三种技术中，Swift 的学习难度最大。</p>
+<h1 id="译文如下："><a href="#译文如下：" class="headerlink" title="译文如下："></a>译文如下：</h1><hr>
+<p>能够写点关于手机应用程序 App 开发的文章，让我感到相当兴奋。在我的脑海中形成这个想法已经很久了。在开始之前，我想先简单的介绍一下我自己。</p>
+<p>我是一个全栈开发软件工程师（既会前端也懂后台）。在过去六年的时间中，我一直使用 JavaScript 语言做软件开发。从古老的 ES5 开始，这门语言发展和进步非常的显著。充分的了解过去可以更好的理解未来，这一点是非常重要的。</p>
+<p>好了，让我们开始进入技术吧。</p>
+<h2 id="Cordova"><a href="#Cordova" class="headerlink" title="Cordova"></a>Cordova</h2><p>过去的四年中，我使用Cordova做开发的频率并不多。</p>
+<p>以前，如果你使用 CSS3 语法的新特性，即便是做一个简单的动画效果也无法在 Android 设备上正常运行。因为这些 Android 设备都使用自己默认的浏览器，这些浏览器都不提供对 CSS3 语言的支持。当时，只有谷歌浏览器 Chromium 提供对这些动画效果的支持。</p>
+<p><strong>注</strong>：</p>
+<blockquote>
+<p>美国的谷歌浏览器 Chromium 和苹果公司浏览器 Safari 所使用的 webkit 内核是目前公认的最快的网页浏览方式。</p>
+<p>互联网的精神是 自由、开放、共享。</p>
+<p>webkit 内核是由美国的谷歌公司 Google，苹果公司 Apple Inc，加拿大 RIM 公司（黑莓手机制作商）和芬兰的诺基亚公司 Nokia 共同开发的浏览器引擎。其中在代码贡献率方面，Google占了50%，苹果25%、RIM (7%)和诺基亚(5%)。然后源代码全部公开，让全世界的爱好者们都可以免费使用。</p>
+<p>目前使用 webkit 内核的国产浏览器有：360极速浏览器、枫树浏览器、太阳花浏览器、世界之窗极速版、傲游浏览器和 UC 浏览器电脑版等。</p>
+<p>搜狗高速浏览器和腾讯的 qq 浏览器官网未提及 Chromium，只说采用 webkit 内核，经网友测试这两款浏览器极有可能也是使用的 Chromium，只是官方不承认而已。</p>
+<p>包括2018年高调宣称 打破美国垄断，拥有中国首个自主创新智能浏览器内核 的 红芯浏览器，也是使用 Chromium 的源代码。</p>
+<p>全世界的手机除了美国苹果公司的 iphone 之外，全部使用美国谷歌 Google 公司开发的 Android(安卓系统) 作为操作系统。包括国内的华为、小米、OPPO、Vivo等。</p>
+<p>Android 操作系统最初由 Andy Rubin 个人开发，2005年8月由 Google 收购注资。2007年11月，Google 与84家硬件制造商、软件开发商及电信营运商组建开放手机联盟共同研发改良 Android 系统。随后 Google 公司再次发布了 Android 的源代码，让全世界的互联网爱好者和手机研发厂商可以免费使用。 截至 2013年09月24日，全世界采用这款系统的设备数量已经达到10亿台。</p>
+<p>谷歌 Google 公司目前市值 7752 亿美元，国内目前市值最高的公司阿里巴巴市值 4354 亿美元，紧随其后的腾讯市值 4220 亿美元。<a href="http://economy.caijing.com.cn/20190203/4561005.shtml" target="_blank" rel="noopener">(数据截至2019-2-2)</a></p>
+</blockquote>
+<p>所以，Cordova 的开发者与时俱进的把 Chromium 的精简版内嵌进了它的升级版本中，这样使用 Cordova 做开发就可以支持 CSS3 等语法的新特性，呈现各种酷炫的动画效果。</p>
+<p>对于那些传统的网页开发人员（Web Developer）而言，使用 Cordova 技术把你电脑上的网站直接作为 App 在手机上运行，是一件让人兴奋和着迷的事情。</p>
+<p>而且，对于一个关注 JavaScript 及其生态系统的团队来说，使用 Ionic ( AngularJS + Cordova + IonicUI) 开发项目是一笔有趣的投资。这使得 Cordova 在项目开发中举足轻重，同时却会造成整个项目中的其他技术变得虚弱。比如 Web。</p>
+<p><img src="https://image.tracup.com/55cbbbcf68bf29eec7248c1321213bbe" alt="cordovaapparchitecture.png" title="这张图很好的展示了 Cordova 技术如何将 Web 应用转换为手机操作系统可运行的程序的过程"></p>
+<p><strong>注：</strong></p>
+<blockquote>
+<p>AugularJS 是美国 Google 公司基于 JavaScript 编程语言开发的一款前端框架，目前是前端三大框架之一。</p>
+<p>前端三大框架分别是：</p>
+</blockquote>
+<p><img src="https://image.tracup.com/b9066a03b2258a87e410db81f3fcdb04" alt="Angular.jpg" title="美国 Google 谷歌公司的 AugularJS"></p>
+<p><img src="https://image.tracup.com/03c50023c9990747c43296bf9f596b3f" alt="React.png" title="美国 Facebook 脸书公司的 React"></p>
+<p><img src="https://image.tracup.com/21da1dc093a8b6db567a103f47141f96" alt="VueJS.jpg" title="在美华人 尤雨溪 在 Google 实习期间开发的 Vue"></p>
+<blockquote>
+<p>这三大前端框架都是免费开源的，目前使用量最大的是 React，最受欢迎的是 Vue。</p>
+<p>Ionic 是美国 Google 谷歌公司开发的一套绑定了 AngularJS, Sass, Cordova, 专注于用 Web 开发技术，基于 HTML5 创建类似于手机平台原生应用的一个开发框架。</p>
+<p>理论上，你使用了 Ionic 开发的项目，只需要一套代码，就可以运行在电脑、平板、安卓手机、苹果手机、微软手机等等所有不同的平台上。</p>
+</blockquote>
+<h3 id="主要问题"><a href="#主要问题" class="headerlink" title="主要问题"></a>主要问题</h3><ul>
+<li><p>原生代码通过它与应用程序的浏览器层通讯。</p>
+</li>
+<li><p>WKWebView 是只支持 iOS 设备的浏览器，并且安卓设备和苹果设备的浏览器之间有很多不一致性。</p>
+</li>
+</ul>
+<blockquote>
+<p>由于iOS平台的限制，所有浏览器都必须构建在 WebKit 渲染引擎之上。</p>
+</blockquote>
+<ul>
+<li>所有通信都必须通过HTML渲染引擎 (在苹果设备 iOS 中是 WebView)，最终导致 App 的表现和设备上面的浏览器严格相关，会出现不一样的呈现效果。</li>
+</ul>
+<blockquote>
+<p>关于浏览器的更多知识，<a href="https://www.cnblogs.com/wyaocn/p/5761163.html" target="_blank" rel="noopener">请点击这里。</a></p>
+</blockquote>
+<hr>
+<h2 id="React-Native"><a href="#React-Native" class="headerlink" title="React Native"></a>React Native</h2><p>在 React Native (简称RN) 第一次发布时，它宣称只使用 JavaScript 也能编写原生移动应用,这对于开发者非常具有吸引力。</p>
+<p><strong>注：</strong></p>
+<blockquote>
+<p> React Native 是美国 Facebook 公司在 React 的基础上开发的开源的跨平台 App 框架。</p>
+<p>它的目标是让 Web 开发者既不用学习 Objective-C (一种用于开发运行在所有苹果公司设备上的应用程序的编程语言)，也不用学习 Java (用于开发运行在所有使用 Android 安卓操作系统的设备上的应用程序的编程语言)。</p>
+<p>仅仅使用 Web 开发常用的 JavaScript 语言即可开发出能同时运行在 PC端（电脑）、iOS端(苹果设备)、Android端(安卓设备)的混合应用，并且从使用感受上和原生应用几乎一模一样。</p>
+<p>听起来是不是很诱人？</p>
+</blockquote>
+<p>让我们先来看看 React Native 的生态系统。</p>
+<p>Facebook 的这个项目团队每个月会发布一个新版本，直到去年的九月份（我猜的）。此后，据我观察，他们开始每隔两个月才发布更新后的版本。</p>
+<p><img src="https://image.tracup.com/44ca11fbde55ecbd5c7b012de5a367d1" alt="react-vs-swift.png" title="在不同的状态下，对比React Native 和 Swift（原生App） 的CPU使用率"></p>
+<p>由图可知，即便和用 Swift 语言开发的原生 App 比较起来，性能一样不俗。在2017年，我们使用 React-Native 开发了一系列项目。开发过程很顺利，团队中的每个人都很开心。代码发布的很快，因为我们使用 JavaScript 的技能早已炉火纯青，我们总能按时交付并发布高质量的 App。</p>
+<p>我一直用的很爽，直到需要自己写通讯接口的代码的时候（通过 JavaScript bridge 建立到 Swift 端的通讯）。我根据 Facebook 团队的建议更新了react-native-git-upgrade模块，却造成了一个未知的变化，导致了我的代码报错。</p>
+<h3 id="主要问题-1"><a href="#主要问题-1" class="headerlink" title="主要问题"></a>主要问题</h3><ul>
+<li><p>它所依赖的 React 和 React-Native 内核之间的不一致性；</p>
+</li>
+<li><p>React 仍然不遵循语义化的版本控制。在我看来，一个诞生已经四年，每天都在积极开发的项目，不应该是 0.5x.xx 这种版本号。(这大概反映了一个事实：底层还没稳定，所以发不了1.0。)</p>
+</li>
+<li><p>不一致性在 React-Native 内核已经出现很多次了。</p>
+</li>
+</ul>
+<hr>
+<h2 id="Swift"><a href="#Swift" class="headerlink" title="Swift"></a>Swift</h2><p>我刚刚才开始使用 Swift 做开发仅仅一个多月，所以现在就对它盖棺定论并不客观。</p>
+<p>以我的拙见，Swift 做的事情，和 Cordova，React-Native 是一样的，都是用来开发手机端移动应用 App 。</p>
+<p>每一段使用 Swift 书写的代码都有一个目的。强迫开发者使用苹果公司 XCode 去做开发，这给新手带来了一定的痛苦。</p>
+<p>自动布局约束对于新开发人员来说是相当困难的。有很多很棒的库，比如 SnapKit, Cartography，旨在解决这种模糊性，但仍然不是默认的方法。</p>
+<h2 id="综上所述，我作为一名开发人员最好的体验还是使用-Swift。"><a href="#综上所述，我作为一名开发人员最好的体验还是使用-Swift。" class="headerlink" title="综上所述，我作为一名开发人员最好的体验还是使用 Swift。"></a>综上所述，我作为一名开发人员最好的体验还是使用 Swift。</h2><p>因为既没有 React-Native 的不一致性 (JavaScript bridge)，也没有 Cordova 的 WebView 这些坑儿让你跳。你可以使用任何你想要的库，并且可以无限制地访问设备。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-heart"></i>感谢阅读-------------</div>
+    
+</div>
+      
+    </div>
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创和品质内容分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/ratingpay.jpg" alt="Humos Wu. 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/技术/" rel="tag"><i class="fa fa-tag"></i> 技术</a>
+          
+            <a href="/tags/编程语言/" rel="tag"><i class="fa fa-tag"></i> 编程语言</a>
+          
+            <a href="/tags/App开发/" rel="tag"><i class="fa fa-tag"></i> App开发</a>
+          
+            <a href="/tags/React/" rel="tag"><i class="fa fa-tag"></i> React</a>
+          
+            <a href="/tags/Swift/" rel="tag"><i class="fa fa-tag"></i> Swift</a>
+          
+            <a href="/tags/Cordova/" rel="tag"><i class="fa fa-tag"></i> Cordova</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/白蛇：缘起之影评/" rel="next" title="白蛇：缘起之影评">
+                <i class="fa fa-chevron-left"></i> 白蛇：缘起之影评
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/人不是因为梦想而伟大，而是因为努力实现梦想而伟大。/" rel="prev" title="人不会因为梦想而伟大，而会因为实现梦想而伟大。">
+                人不会因为梦想而伟大，而会因为实现梦想而伟大。 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Humos Wu.">
+            
+              <p class="site-author-name" itemprop="name">Humos Wu.</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#译文如下："><span class="nav-number">2.</span> <span class="nav-text">译文如下：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Cordova"><span class="nav-number">2.1.</span> <span class="nav-text">Cordova</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主要问题"><span class="nav-number">2.1.1.</span> <span class="nav-text">主要问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React-Native"><span class="nav-number">2.2.</span> <span class="nav-text">React Native</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主要问题-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">主要问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Swift"><span class="nav-number">2.3.</span> <span class="nav-text">Swift</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#综上所述，我作为一名开发人员最好的体验还是使用-Swift。"><span class="nav-number">2.4.</span> <span class="nav-text">综上所述，我作为一名开发人员最好的体验还是使用 Swift。</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Humos Wu.</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">30.6k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+  <div class="footer-custom">Hosted by <a target="_blank" href="https://tk208.github.io/">Humos Wu</a>,All rights reserved.</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+        
+    
+
+    <!-- 页面点击小红心 -->
+    <script type="text/javascript" src="/js/src/clicklove.js"></script>
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.lazyload/1.9.3/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="//cdn.jsdelivr.net/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'q3lWDa8RYDlC63QC2oKcOwfV-gzGzoHsz',
+        appKey: '30vgbuR3TPL2Ppuo64mNsy8U',
+        placeholder: '欢迎留下您的评论',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("q3lWDa8RYDlC63QC2oKcOwfV-gzGzoHsz", "30vgbuR3TPL2Ppuo64mNsy8U");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+
+
+</body>
+</html>
